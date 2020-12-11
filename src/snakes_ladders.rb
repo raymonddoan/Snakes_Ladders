@@ -1,3 +1,1 @@
-require './lib/board.rb'
-
-puts table.render(:ascii)
+require_relative 'lib/board'
