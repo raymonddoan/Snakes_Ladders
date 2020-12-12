@@ -13,8 +13,10 @@ class Square
   end
 
   # Model
-  def landed
-    @player = !@player
+  def landed(player_position)
+    if player_position = location
+      @player = !@player
+    end
   end
 
 end
