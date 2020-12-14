@@ -3,15 +3,23 @@ require_relative "square"
 
 class Board
 
-  attr_reader :board
+  attr_reader :board, :hash
 
   def initialize
     @board = []
+
+    j = 0
+    hash = {}
+    while j != 101
+      hash[j] = Square.new(j)
+      j += 1
+    end
+    @hash = hash
+
   end
 
   # Visual
   def printBoard
-    i = 1
     r1 = []
     r2 = []
     r3 = []
@@ -22,33 +30,73 @@ class Board
     r8 = []
     r9 = []
     r10 = []
+    i = 0
     while i != 101
-        case i
-        when 1..10
-          r1 << eval("s#{i} = Square.new(#{i})")
-        when 11..20
-          r2 << eval("s#{i} = Square.new(#{i})")
-        when 21..30
-          r3 << eval("s#{i} = Square.new(#{i})")
-        when 31..40
-          r4 << eval("s#{i} = Square.new(#{i})")
-        when 41..50
-          r5 << eval("s#{i} = Square.new(#{i})")
-        when 51..60
-          r6 << eval("s#{i} = Square.new(#{i})")
-        when 61..70
-          r7 << eval("s#{i} = Square.new(#{i})")
-        when 71..80
-          r8 << eval("s#{i} = Square.new(#{i})")
-        when 81..90
-          r9 << eval("s#{i} = Square.new(#{i})")
-        when 91..100
-          r10 << eval("s#{i} = Square.new(#{i})")
-        end
-        i += 1
+      case i
+      when 0..9
+        r1 << @hash[i]
+      when 10..19
+        r2.unshift(@hash[i])
+      when 20..29
+        r3 << @hash[i]
+      when 30..39
+        r4.unshift(@hash[i])
+      when 40..49
+        r5 << @hash[i]
+      when 50..59
+        r6.unshift(@hash[i])
+      when 60..69
+        r7 << @hash[i]
+      when 70..79
+        r8.unshift(@hash[i])
+      when 80..89
+        r9 << @hash[i]
+      when 90..99
+        r10.unshift(@hash[i])
+      end
+      i += 1
     end
 
     @board = TTY::Table.new([r10, r9, r8, r7, r6, r5, r4, r3, r2, r1])
+
   end
 
+  def show_hash
+    @hash
+  end
+
+  # Method
+  def landed_board(position)
+    @hash[position].landed(position)
+  end
+
+  def update_board(position)
+    if position == @hash[position].location
+      @hash[position].landed(position)
+    else
+      @hash[position].moved(position)
+    end
+  end
+
+
+  # def board_squares
+  #   while i != 100
+  #     i = 0
+  #     @board << Square.new(i, i + 1)
+  #     i += 1
+  #   end
+  #   @board
+  # end
+
+  # def 
+    
+  # end
+
 end
+
+# oldboard = Board.new
+# oldboard.update_board(1)
+# puts oldboard.printBoard
+
+# newboard = Board.new
+# puts newboard.board_squares
