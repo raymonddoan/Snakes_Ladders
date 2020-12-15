@@ -1,4 +1,5 @@
 require_relative 'dice'
+require_relative 'board'
 
 class Player
 
@@ -26,6 +27,11 @@ class Player
   def roll
     roll = @dice.roll_die
     @die_rolls.push(roll)
+    if @position + roll >= 99
+      return roll, WIN      
+    else
+      return roll, MOVE
+    end
   end
 
   def last_roll
@@ -34,6 +40,10 @@ class Player
 
   def now_position
     @position += last_roll()
+  end
+
+  def position
+    @position
   end
   
 end
