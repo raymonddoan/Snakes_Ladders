@@ -2,6 +2,8 @@ require_relative 'dice'
 require_relative 'board'
 
 class Player
+  MOVE = 1
+  WIN = 2
 
   attr_reader :name, :dice, :die_rolls
 
@@ -38,7 +40,7 @@ class Player
     @die_rolls.last
   end
 
-  def now_position
+  def current_position
     @position += last_roll()
   end
 

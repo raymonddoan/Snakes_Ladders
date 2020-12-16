@@ -2,6 +2,7 @@ require 'tty-table'
 require_relative "square"
 
 class Board
+  NONE = 0
   LADDER = 1
   SNAKE = 2
 
@@ -95,7 +96,6 @@ class Board
     @hash[98].snakeorladder( SNAKE, 77 );
   end
 
-
   # def board_squares
   #   while i != 100
   #     i = 0
@@ -114,6 +114,7 @@ end
 # oldboard = Board.new
 # oldboard.update_board(1)
 # puts oldboard.printBoard
+# puts oldboard.setsnakesladders
 
 # newboard = Board.new
 # puts newboard.board_squares

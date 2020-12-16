@@ -5,7 +5,7 @@ class Square
   def initialize(location)
     @location = location
     @player = false
-    @type = type
+    @type = 0
     @destination = 0
   end
 
