@@ -7,13 +7,15 @@ class Player
 
   attr_reader :name, :dice, :die_rolls
 
-  attr_accessor :position
+  attr_accessor :position, :color, :piece
 
-  def initialize(name:, position: 0, die_rolls: [], dice: Dice)
+  def initialize(name:)
     @name = name
-    @position = position
-    @die_rolls = die_rolls
-    @dice = dice
+    @position = 0
+    @die_rolls = []
+    @dice = Dice
+    @color = ""
+    @piece = piece
   end
 
   # View
@@ -29,11 +31,6 @@ class Player
   def roll
     roll = @dice.roll_die
     @die_rolls.push(roll)
-    if @position + roll >= 99
-      return roll, WIN      
-    else
-      return roll, MOVE
-    end
   end
 
   def last_roll
@@ -44,8 +41,20 @@ class Player
     @position += last_roll()
   end
 
-  def position
-    @position
+  def color
+    @color
+  end
+
+  def set_piece
+    if @color == "green"
+      @piece = "[X]".colorize(:green)
+    elsif @color == "yellow"
+      @piece = "[X]".colorize(:yellow)
+    elsif @color == "blue"
+      @piece = "[X]".colorize(:blue)
+    elsif @color == "red"
+      @piece = "[X]".colorize(:red)
+    end
   end
   
 end

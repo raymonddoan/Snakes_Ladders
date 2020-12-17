@@ -1,4 +1,5 @@
 require 'tty-table'
+require 'colorize'
 require_relative "square"
 
 class Board
@@ -8,17 +9,22 @@ class Board
 
   attr_reader :board, :hash
 
+  attr_accessor :players
+
   def initialize
     @board = []
+    @hash = {}
+    @players_array = []
+  end
 
-    j = 0
-    hash = {}
-    while j != 100
-      hash[j] = Square.new(j)
-      j += 1
+  def make_squares(players_array)
+    i = 0
+    while i != 100
+      @hash[i] = Square.new(i)
+      @hash[i].players = players_array
+      @players_array = players_array
+      i += 1
     end
-    @hash = hash
-
   end
 
   # Visual
@@ -59,13 +65,34 @@ class Board
       end
       i += 1
     end
+    
+    # for every item in r1 do this and take an index
+    r1.each_with_index do |x, index| 
+      #for every player in player array do this
+      @players_array.each do |player|
+        # check if current location is not already taken by player 1
+          if r1[index] != @players_array[0].piece #|| r1[index] != @players_array[1].piece || r1[index] != @players_array[2].piece || r1[index] != @players_array[3].piece
+            # check if player position doesnt equal the location
+            if player.position != x.location
+              # r1 now equals [0]..[9]
+              r1[index] = x.draw
+            else
+              # change r1 to the players piece
+              r1[index] = player.piece
+            end
+          end
+      end
+    end
 
     @board = TTY::Table.new([r10, r9, r8, r7, r6, r5, r4, r3, r2, r1])
-
   end
 
   def show_hash
     @hash
+  end
+
+  def hash_size
+    @hash.length
   end
 
   # Method
@@ -96,24 +123,11 @@ class Board
     @hash[98].snakeorladder( SNAKE, 77 );
   end
 
-  # def board_squares
-  #   while i != 100
-  #     i = 0
-  #     @board << Square.new(i, i + 1)
-  #     i += 1
-  #   end
-  #   @board
-  # end
-
-  # def 
-    
-  # end
-
 end
 
 # oldboard = Board.new
-# oldboard.update_board(1)
-# puts oldboard.printBoard
+# # oldboard.update_board(1)
+# p oldboard.show_hash
 # puts oldboard.setsnakesladders
 
 # newboard = Board.new
