@@ -84,6 +84,9 @@ class Board
       end
     end
 
+    # board = []
+    # board.push(r10, r9, r8, r7, r6, r5, r4, r3, r2, r1) 
+    # @board = TTY::Table.new([board])
     @board = TTY::Table.new([r10, r9, r8, r7, r6, r5, r4, r3, r2, r1])
   end
 

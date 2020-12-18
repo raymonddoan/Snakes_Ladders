@@ -19,9 +19,9 @@ class Game
     puts "Welcome to Snakes and Ladders - the only game you will ever want to play ! Let's get started. "
 
     @players = Array.new
-    puts "Please enter all players' names: (Max 4 players)"
+    puts "Please enter all players' names: (Max 2 players)"
     p = 0
-    for p in 0..3 do
+    for p in 0..1 do
       input = gets.chomp.capitalize
       break if input == ''
       @players << Player.new(name: input)
@@ -30,7 +30,7 @@ class Game
 
     puts "Please enter what color you would like: (blue, red, green, yellow)"
     p = 0
-    for p in 0..3 do
+    for p in 0..1 do
       color = gets.chomp.downcase # Set error message
       break if color == ''
       @players[p].color = color
@@ -51,7 +51,7 @@ class Game
     while true
       for p in 0 .. @playersCount - 1 do
         puts 
-        if (p == 0)
+        # if (p == 0)
           puts
           print "#{@players[p]}".colorize(:"#{@players[p].color}")
           puts ", your turn. Your position is square #{@players[p].position}. \n Press [RETURN] to roll the die."
@@ -72,22 +72,22 @@ class Game
             exit
           end
 
-        else
-          @board.removeX_board(@players[p].position)
-          @players[p].roll
-          print "#{@players[p]}".colorize(:"#{@players[p].color}")
-          puts " rolls #{@players[p].last_roll}"
-          player_current_pos = @players[p].current_position
+        # else
+        #   @board.removeX_board(@players[p].position)
+        #   @players[p].roll
+        #   print "#{@players[p]}".colorize(:"#{@players[p].color}")
+        #   puts " rolls #{@players[p].last_roll}"
+        #   player_current_pos = @players[p].current_position
 
-          if player_current_pos >= @board.hash_size
-            print "#{@players[p]}".colorize(:"#{@players[p].color}")
-            print " reached position #{@board.hash_size} and won the game!!!!\n"
-            puts @board.printBoard
-            puts "Press [RETURN] to exit the game"
-            gets
-            exit
-          end
-        end
+        #   if player_current_pos >= @board.hash_size
+        #     print "#{@players[p]}".colorize(:"#{@players[p].color}")
+        #     print " reached position #{@board.hash_size} and won the game!!!!\n"
+        #     puts @board.printBoard
+        #     puts "Press [RETURN] to exit the game"
+        #     gets
+        #     exit
+        #   end
+        # end
 
         type = @board.show_hash[player_current_pos].type
         if type == NONE
@@ -116,6 +116,10 @@ class Game
 
   def players_array
     @players
+  end
+
+  def winner
+    
   end
 end
 
