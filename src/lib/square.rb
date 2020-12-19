@@ -1,6 +1,3 @@
-require 'colorize'
-require_relative 'game'
-
 class Square
 
   attr_reader :location, :type, :destination, :player, :draw
@@ -16,43 +13,25 @@ class Square
     @draw = "[#{location}]"
   end
 
-  # View
-  def to_s
-    # if @player = true
-    #   @players.each do |player|
-    #     if player.position == @location
-    #       return player.piece
-    #     end
-    #   end
-    # else
-    #   return "[#{@location}]"
-    # end
-    @player ? "[X]".colorize(:blue) : "[#{location}]"
-  end
-
   # Model
+  # Flags the player has landed on the square
   def landed(player_position)
     if player_position = @location
       @player = true
-
     end 
   end
 
+  # Flags the player has left the sqaure
   def moved(player_position)
     if player_position = @location
       @player = false
     end
   end
 
-  def location
-    @location
-  end
-
+  # Sets the additional attributes for 'snake' and 'ladder' squares
   def snakeorladder(type, destination)
     @type = type
     @destination = destination
   end
 
 end
-
-# new_square 
