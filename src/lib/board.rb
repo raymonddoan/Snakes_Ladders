@@ -68,16 +68,16 @@ class Board
         # for every player in player array do this
         @players_array.each do |player|
           # check if current location is not already taken by player 1
-            if rows[index] != @players_array[0].piece
-              # check if player position doesnt equal the location
-              if player.position != x.location
-                # r1[index] now equals [0]..[9]
-                rows[index] = x.draw
-              else
-                # change r1 to the players piece
-                rows[index] = player.piece
-              end
+          if rows[index] != @players_array[0].piece
+            # check if player position doesnt equal the location
+            if player.position != x.location
+              # r1[index] now equals [0]..[9]
+              rows[index] = x.draw
+            else
+              # change r1 to the players piece
+              rows[index] = player.piece
             end
+          end
         end
       end
     end
