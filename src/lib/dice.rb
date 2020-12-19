@@ -1,11 +1,5 @@
 class Dice
-  def initialize
-    
-  end
-
-  # View
-
-  # Model
+  # Rolls from 1 to 6 
   def self.roll_die
     1 + rand(6)
   end

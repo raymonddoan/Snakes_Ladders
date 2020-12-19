@@ -1,0 +1,36 @@
+Title
+	Software Development Plan
+		Purpose
+			Problem Identification
+			Why developed?
+			At high level, what application will do
+		Scope
+			Target audience
+			How member of target audience will use it
+	High-Level Logic
+		Features Outline
+			What are the most important features?
+		Control Flow Diagram (Recgonised formats - UML)
+			Integrations of features
+		User Experience (This needs to be completed)
+			How users find out features
+			How users interact with features
+			Error handling
+	Development Process
+		Tech Stack (Language, Gems used)
+			Git for source control
+			Ruby for language
+			Rspec for testing, colorize for colour, tty-table for the board
+		Challenges
+			Initial thought and design process vs now
+			Square obj should have been thought out more carefully
+			Relaying back to objects from the Game instance back into the Square
+		Favourite Parts
+		Ethics
+	Terminal App
+		How to install
+		How it is used?
+		Walkthrough
+			Quick Demo
+			Code behind Features
+		

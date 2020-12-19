@@ -48,7 +48,6 @@ To install and run
 
 - TODO: insert the finished control flow diagram
 
-<<<<<<< HEAD
 ## Implementation plan
 
 Tech stack used:
@@ -65,21 +64,3 @@ See [here](https://trello.com/b/ydaluzh1/snakes-and-ladders) for the Trello boar
 
 
 
-=======
-# Implementation plan
-
-<!--- This is referring to Trello and/or Jira --->
-
-- https://trello.com/b/ln4iLwhX/atm
-
-## How to install and use
-
-Dependencies:
-- Ruby
-
-To install and run
-- Install Ruby
-- `$ gem install bundler`
-- `$ bundle install`
-- `$ ruby index.rb`
->>>>>>> main
