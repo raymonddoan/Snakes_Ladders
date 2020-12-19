@@ -13,6 +13,7 @@ class Game
   attr_accessor :board, :player
 
   def initialize
+    # Instantiate a new board
     @board = Board.new
 
     system('clear')
@@ -41,9 +42,6 @@ class Game
     @board.make_squares(@players)
   end
 
-  # View
-
-  # Model
   def play
     @playersCount = @players.count
     @board.setsnakesladders
@@ -51,43 +49,25 @@ class Game
     while true
       for p in 0 .. @playersCount - 1 do
         puts 
-        # if (p == 0)
-          puts
+        puts
+        print "#{@players[p]}".colorize(:"#{@players[p].color}")
+        puts ", your turn. Your position is square #{@players[p].position}. \n Press [RETURN] to roll the die."
+        gets
+        system('clear')
+        @board.removeX_board(@players[p].position)
+        @players[p].roll
+        print "#{@players[p]}".colorize(:"#{@players[p].color}")
+        puts " rolls #{@players[p].last_roll}"
+        player_current_pos = @players[p].current_position
+
+        if player_current_pos >= @board.hash_size
           print "#{@players[p]}".colorize(:"#{@players[p].color}")
-          puts ", your turn. Your position is square #{@players[p].position}. \n Press [RETURN] to roll the die."
+          print " reached position #{@board.hash_size} and won the game!!!!\n"
+          puts @board.printBoard
+          puts "Press [RETURN] to exit the game"
           gets
-          system('clear')
-          @board.removeX_board(@players[p].position)
-          @players[p].roll
-          print "#{@players[p]}".colorize(:"#{@players[p].color}")
-          puts " rolls #{@players[p].last_roll}"
-          player_current_pos = @players[p].current_position
-
-          if player_current_pos >= @board.hash_size
-            print "#{@players[p]}".colorize(:"#{@players[p].color}")
-            print " reached position #{@board.hash_size} and won the game!!!!\n"
-            puts @board.printBoard
-            puts "Press [RETURN] to exit the game"
-            gets
-            exit
-          end
-
-        # else
-        #   @board.removeX_board(@players[p].position)
-        #   @players[p].roll
-        #   print "#{@players[p]}".colorize(:"#{@players[p].color}")
-        #   puts " rolls #{@players[p].last_roll}"
-        #   player_current_pos = @players[p].current_position
-
-        #   if player_current_pos >= @board.hash_size
-        #     print "#{@players[p]}".colorize(:"#{@players[p].color}")
-        #     print " reached position #{@board.hash_size} and won the game!!!!\n"
-        #     puts @board.printBoard
-        #     puts "Press [RETURN] to exit the game"
-        #     gets
-        #     exit
-        #   end
-        # end
+          exit
+        end
 
         type = @board.show_hash[player_current_pos].type
         if type == NONE
@@ -118,10 +98,5 @@ class Game
     @players
   end
 
-  def winner
-    
-  end
 end
 
-# game = Game.new
-# game.play
