@@ -1,5 +1,6 @@
 require 'tty-table'
 require 'colorize'
+
 require_relative "square"
 
 class Board
@@ -17,16 +18,6 @@ class Board
     @players_array = []
   end
 
-  def make_squares(players_array)
-    i = 0
-    while i != 100
-      @hash[i] = Square.new(i)
-      @hash[i].players = players_array
-      @players_array = players_array
-      i += 1
-    end
-  end
-
   # Visual
   def printBoard
     r1 = []
@@ -39,6 +30,8 @@ class Board
     r8 = []
     r9 = []
     r10 = []
+
+    # Shifts the hash objs into rows. Depending on what hash, the rows will reverse in order.
     i = 0
     while i != 101
       case i
@@ -66,51 +59,44 @@ class Board
       i += 1
     end
     
-    # for every item in r1 do this and take an index
-    r1.each_with_index do |x, index| 
-      #for every player in player array do this
-      @players_array.each do |player|
-        # check if current location is not already taken by player 1
-          if r1[index] != @players_array[0].piece
-            # check if player position doesnt equal the location
-            if player.position != x.location
-              # r1 now equals [0]..[9]
-              r1[index] = x.draw
-            else
-              # change r1 to the players piece
-              r1[index] = player.piece
+    # Update row_arrays to show players position on board
+    board = []
+    board.push(r10, r9, r8, r7, r6, r5, r4, r3, r2, r1) 
+    board.each do |rows|
+      # for every item in r1 do this and take an index
+      rows.each_with_index do |x, index| 
+        # for every player in player array do this
+        @players_array.each do |player|
+          # check if current location is not already taken by player 1
+            if rows[index] != @players_array[0].piece
+              # check if player position doesnt equal the location
+              if player.position != x.location
+                # r1[index] now equals [0]..[9]
+                rows[index] = x.draw
+              else
+                # change r1 to the players piece
+                rows[index] = player.piece
+              end
             end
-          end
+        end
       end
     end
 
-    # board = []
-    # board.push(r10, r9, r8, r7, r6, r5, r4, r3, r2, r1) 
-    # board = [[99,98,97,...],[]]
-
-
-    # @board = TTY::Table.new([board])
+    # Prints the board in a table-like format
     @board = TTY::Table.new([r10, r9, r8, r7, r6, r5, r4, r3, r2, r1])
 
   end
 
-  def show_hash
-    @hash
-  end
-
-  def hash_size
-    @hash.length
-  end
-
   # Method
-  def update_board(position)
+  def player_landed(position)
     @hash[position].landed(position)
   end
 
-  def removeX_board(position)
+  def player_left(position)
     @hash[position].moved(position)
   end
 
+  # Defined the Snakes and Ladders start and end points for the game
   def setsnakesladders
     @hash[3].snakeorladder( LADDER, 13 ); 
     @hash[8].snakeorladder( LADDER, 30 ); 
@@ -130,12 +116,25 @@ class Board
     @hash[98].snakeorladder( SNAKE, 77 );
   end
 
+  # Creates the squares. Their location IDs are set in a hash
+  def make_squares(players_array)
+    i = 0
+    while i != 100
+      @hash[i] = Square.new(i)
+      @hash[i].players = players_array
+      @players_array = players_array
+      i += 1
+    end
+  end
+
+  # Allows interaction with the hash -> needed in order to update the player's location
+  def shash
+    @hash
+  end
+
+  # Reach the end of the board and sets the win condition
+  def end_board
+    @hash.length
+  end
+
 end
-
-# oldboard = Board.new
-# # oldboard.update_board(1)
-# p oldboard.show_hash
-# puts oldboard.setsnakesladders
-
-# newboard = Board.new
-# puts newboard.board_squares

@@ -1,5 +1,4 @@
 require_relative 'dice'
-require_relative 'board'
 
 class Player
   MOVE = 1
@@ -41,10 +40,7 @@ class Player
     @position += last_roll()
   end
 
-  def color
-    @color
-  end
-
+  # Represents the player's piece on the board in their colour
   def set_piece
     if @color == "green"
       @piece = "[X]".colorize(:green)
@@ -54,6 +50,10 @@ class Player
       @piece = "[X]".colorize(:blue)
     elsif @color == "red"
       @piece = "[X]".colorize(:red)
+    elsif @color == "magenta"
+      @piece = "[X]".colorize(:magenta)
+    elsif @color == "cyan"
+      @piece = "[X]".colorize(:cyan)
     end
   end
   
