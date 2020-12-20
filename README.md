@@ -14,9 +14,11 @@ Based on the physical game, this application emulates the ancient game 'Snakes a
 
 > Snakes and Ladders, known originally as Moksha Patam, is an ancient Indian board game for two or more players regarded today as a worldwide classic. It is played on a game board with numbered, gridded squares. A number of "ladders" and "snakes" are pictured on the board, each connecting two specific board squares.
 
-This purpose of this application is to provide a free version of the game that can be run on the terminal. 
+This purpose of this application is to provide a free version of the game that can be run on the terminal. The current version of the game has a limit of 2 players with one virtual dice. Players will navigate their piece from start to finish, avoid the snakes, and take shortcuts going up the ladders. The first player that reaches the final square on the board wins the game. To win the player will need to roll the number in the final square or higher. 
 
-The development of this application is to entertain the users with an ancient old game. The target audience are people who getting into programming or who love games, ages from 6+. 
+The target audience are people who getting into programming or who love games, ages from 6+. The development of Snakes and Ladders is to entertain the players of all ages with an ancient old game. In addition to this, Snakes and Ladder can be used as a lesson about the passage of life. According to [Times of India](https://timesofindia.indiatimes.com/Who-invented-the-board-game-Snakes-and-Ladders/articleshow/3585003.cms#:~:text=According%20to%20some%20historians%2C%20the,to%20stand%20for%20an%20evil.):
+
+> The game was invented by Saint Gyandev in the 13th century AD. Originally, the game was used as a part of moral instruction to children. The squares in which ladders start were supposed to stand for a virtue and those housing the head of the snake were supposed to stand for an evil.
 
 
 
@@ -48,7 +50,7 @@ To install and run
 ## Board and Squares
 
 * **Board visualisation**: For a user-friendly experience, a board is rendered visually for the players to know where they are positioned. This is run through a loop to update the board based on where the player is positioned.  
-* **Portals (Snakes and Ladders)**: As the main feature of the game, certain squares on the board are snakes or ladders, which change the `location` of the player to a new `destination`. This will warp the players to the end-point square and update the player's `position` accordingly.  
+* **Portals (Snakes and Ladders)**: As the main feature of the game, certain squares on the board are snakes or ladders, which change the `location` of the player to a new `destination`. When a player lands on a top of a snake, their playing piece will slide down to the bottom of the snake. Alternatively, when a player lands at the base of a ladder, it immediately climbs to the top of the ladder. Both of these portals will warp the players to the end-point square and update the player's `position` accordingly.  
 
 ## Game
 
