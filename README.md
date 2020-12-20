@@ -20,7 +20,7 @@ The development of this application is to entertain the users with an ancient ol
 
 
 
-![SnakesandLadders_Gameplay](.\docs\SnakesandLadders_Gameplay.png)
+![SnakesandLadders_Gameplay](/docs/SnakesandLadders_Gameplay.png)
 
 
 
@@ -80,11 +80,11 @@ Player 1 has landed on 5`
 
 This complete Player 1's turn and moves onto Player 2. The same message and request are shown for Player 2.
 
-![SnakesandLadders_Gameplay2](.\docs\SnakesandLadders_Gameplay2.png)
+![SnakesandLadders_Gameplay2](/docs/SnakesandLadders_Gameplay2.png)
 
 This process repeats for both players until one player reaches the end of the board and wins the game.
 
-![SnakesandLadders_Gameplay3](.\docs\SnakesandLadders_Gameplay3.png)
+![SnakesandLadders_Gameplay3](/docs/SnakesandLadders_Gameplay3.png)
 
 
 
@@ -92,7 +92,7 @@ This process repeats for both players until one player reaches the end of the bo
 
 
 
-![SnakesandLadders_ControlFlow](.\docs\SnakesandLadders_ControlFlow.png)
+![SnakesandLadders_ControlFlow](/docs/SnakesandLadders_ControlFlow.png)
 
 
 
